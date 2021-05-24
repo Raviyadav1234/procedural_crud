@@ -1,37 +1,23 @@
-<?php include 'header.php'; 
-require __DIR__.'/config/dbconnect.php';
-?>
-    <div style="margin-top:80px; " class="container-fluid">
-    <div class="row justify-content-center">
-    <div class="col-sm-6 col-md-4">
-    <form class="post-form" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-        <div class="form-group">
-            <label  for="id" class="pl-2 font-weight-bold">Enter Id</label>
-            <input type="text" class="form-control" name="s_id" />
-        </div>
-        <input class="btn btn-outline-success" type="submit" name="showbtn" value="Show" />
-    </form>
-</div>
-</div>
-</div>
-
-    <?php
-    if(isset($_POST['showbtn'])){
-     $id = $_POST['s_id'];
-     $sql = "SELECT *FROM student  WHERE s_id= {$id}";
+<?php 
+    
+     include 'header.php';
+     require __DIR__.'/config/dbconnect.php';
+     
+     $stu_id = $_GET['id'];
+     $sql = "SELECT *FROM student  WHERE s_id= {$stu_id}";
      $result=mysqli_query($conn,$sql) or die("query unsuccessfull");
       $count=mysqli_num_rows($result);
      if($count>0){
 
       while($row=mysqli_fetch_assoc($result)){
     ?>
-    <div class="mb-3 text-center" style="font-size: 50px;">
+    <div class="mb-3 text-center" style="font-size: 50px; margin-top:70px;">
     <span >Update Post</span>
     
   </div>
   
   <div class="container-fluid mb-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center custom-margin">
       <div class="col-sm-6 col-md-4">
         <form action="updatedata.php" class="shadow-lg p-4" method="POST">
           <div class="form-group">
@@ -77,9 +63,9 @@ require __DIR__.'/config/dbconnect.php';
               class="form-control" placeholder="Mobile" name="mobile" value="<?php echo $row['s_phone'];?>">
           </div>
           <button type="submit" class="btn btn-outline-success mt-3 btn-block shadow-sm font-weight-bold" name="edit">Update</button>
-          <?php if(isset($msg)) {echo $msg; } ?>
+          <?php if(isset($err_msg)) {echo $err_msg; } ?>
         </form>
-        <?php }}} ?>
+        <?php }} ?>
       </div>
     </div>
   </div>

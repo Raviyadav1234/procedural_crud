@@ -13,14 +13,14 @@ include 'header.php';
      $count=mysqli_num_rows($result);
      if($count>0){
     ?>
-    <table cellpadding="7px">
+    <table class="table table-hover table-bordered text-center">
         <thead>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Class</th>
-        <th>Phone</th>
-        <th>Action</th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Class</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Action</th>
         </thead>
         <tbody>
             <?php while($row=mysqli_fetch_assoc($result)){ ?>
@@ -31,8 +31,8 @@ include 'header.php';
                 <td><?php echo $row['c_name'];?></td>
                 <td><?php echo $row['s_phone'];?></td>
                 <td>
-                    <a href='edit.php?id=<?php echo $row['s_id'];?>'>Edit</a>
-                    <a href='delete-inline.php?id=<?php echo $row['s_id'];?>'>Delete</a>
+                <a href='edit-inline.php?id=<?php echo $row['s_id'];?>' value="Edit"><i class="fas fa-pen mr-5"></i></a>
+                <a href='delete-inline.php?id=<?php echo $row['s_id'];?>' value="Delete"><i class="far fa-trash-alt ml-5"></i></a>
                 </td>
             </tr>
            <?php } ?> 
