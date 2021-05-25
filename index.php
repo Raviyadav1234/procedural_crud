@@ -1,5 +1,6 @@
 <?php
-include 'header.php';
+define('title','home');
+require_once 'header.php';
 ?>
 <div id="main-content">
     <h2>All Records</h2>

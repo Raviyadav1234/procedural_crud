@@ -1,6 +1,6 @@
 <?php 
+define('title','add');
 require_once 'header.php';
-
 require __DIR__.'/config/dbconnect.php';
 require __DIR__.'/config/function.php';
 

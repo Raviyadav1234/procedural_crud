@@ -1,4 +1,6 @@
-<?php include 'header.php'; 
+<?php 
+define('title', 'update');
+require_once 'header.php'; 
 require __DIR__.'/config/dbconnect.php';
 ?>
     <div style="margin-top:80px; " class="container-fluid">

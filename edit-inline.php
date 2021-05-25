@@ -1,6 +1,6 @@
 <?php 
-    
-     include 'header.php';
+    define('title', 'update');
+     require_once 'header.php';
      require __DIR__.'/config/dbconnect.php';
      
      $stu_id = $_GET['id'];

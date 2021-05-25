@@ -1,4 +1,6 @@
-<?php include 'header.php'; 
+<?php 
+define('title', 'delete');
+require 'header.php'; 
 
 if(isset($_POST['deletebtn'])){
 	 //including database connection file

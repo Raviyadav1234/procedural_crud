@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CRUD</title>
+    <title><?php echo title;?></title>
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
