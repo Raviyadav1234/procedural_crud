@@ -1,12 +1,19 @@
 <?php
 
 require __DIR__.'/config/dbconnect.php';
+require __DIR__.'/config/function.php';
 
- $id = isset($_POST['sid'])?$_POST['sid']:'';
- $name = isset($_POST['name'])?$_POST['name']:'';
- $address = isset($_POST['address'])?$_POST['address']:'';
- $class = isset($_POST['class'])?$_POST['class']:'';
- $mobile = isset($_POST['mobile'])?$_POST['mobile']:'';
+ $id = sanatise(isset($_POST['sid'])?$_POST['sid']:'');
+ $name = sanatise(isset($_POST['name'])?$_POST['name']:'');
+ $address = sanatise(isset($_POST['address'])?$_POST['address']:'');
+ $class = sanatise(isset($_POST['class'])?$_POST['class']:'');
+ $mobile = sanatise(isset($_POST['mobile'])?$_POST['mobile']:'');
+
+ $id = mysqli_real_escape_string($conn,$id);
+ $name = mysqli_real_escape_string($conn,$name);
+ $address = mysqli_real_escape_string($conn,$address);
+ $class = mysqli_real_escape_string($conn,$class);
+ $mobile = mysqli_real_escape_string($conn,$mobile);
 
      if(isset($_POST['edit'])){
         if($name=="" or $address=="" or $class=="" or $mobile==""){

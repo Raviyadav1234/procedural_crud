@@ -2,10 +2,17 @@
 require_once 'header.php';
 
 require __DIR__.'/config/dbconnect.php';
- $name = isset($_POST['name'])?$_POST['name']:'';
- $address = isset($_POST['address'])?$_POST['address']:'';
- $class = isset($_POST['class'])?$_POST['class']:'';
- $mobile = isset($_POST['mobile'])?$_POST['mobile']:'';
+require __DIR__.'/config/function.php';
+
+ $name = sanatise(isset($_POST['name'])?$_POST['name']:'');
+ $address = sanatise(isset($_POST['address'])?$_POST['address']:'');
+ $class = sanatise(isset($_POST['class'])?$_POST['class']:'');
+ $mobile = sanatise(isset($_POST['mobile'])?$_POST['mobile']:'');
+
+ $name = mysqli_real_escape_string($conn,$name);
+ $address = mysqli_real_escape_string($conn,$address);
+ $class = mysqli_real_escape_string($conn,$class);
+ $mobile = mysqli_real_escape_string($conn,$mobile);
 
      if(isset($_POST['save'])){
         if($name=="" or $address=="" or $class=="" or $mobile==""){
@@ -77,13 +84,3 @@ require __DIR__.'/config/dbconnect.php';
     
 </body>
 </html>
-
-<?php
-//fuction for sanatise input value
-function sanatise($data){
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
