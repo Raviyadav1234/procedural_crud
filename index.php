@@ -29,8 +29,7 @@ background: black;
 
     </style>
 </head>
-<div id="main-content">
-    <h2>All Records</h2>
+    
     <?php
      //including database connection file
      require __DIR__.'/config/dbconnect.php';
@@ -51,7 +50,8 @@ background: black;
      $count=mysqli_num_rows($result);
      if($count>0){
     ?>
-    <table class="table table-hover table-bordered text-center">
+    <div class="table-responsive-sm">
+    <table class="table table-hover table-bordered text-center mt-5">
         <thead>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
@@ -76,6 +76,7 @@ background: black;
            <?php } ?> 
         </tbody>
     </table>
+</div>
 <?php }else{
     echo "<h2>NO Record Found</h2>";
 }
@@ -112,7 +113,6 @@ background: black;
 
 mysqli_close($conn);
  ?>
-</div>
 </div>
 </body>
 </html>
